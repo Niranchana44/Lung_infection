@@ -4,14 +4,15 @@ The project deals with detecting the lung infection from imabges
 
 
 
-# Motivation
+### Motivation
 
 
 
-# Models experimented
+### Models experimented
 
 
 
 
 # Tools used
 Tensorflow
+
