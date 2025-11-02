@@ -14,7 +14,7 @@ Data Exploration and Visualization: Examined image distribution across three cla
 Preprocessing and Augmentation: Applied data augmentation (random flips, rotations, rescaling, and resizing) to increase dataset variability and improve model robustness.
 
 
-### 1️⃣ Dataset Overview
+###  Dataset Overview
 
 The dataset consists of 251 training images and 66 test images distributed across three classes:
 
@@ -41,7 +41,28 @@ Compiled the model with categorical cross-entropy loss and the RMSprop optimizer
 
 ### Models experimented
 
+*  Custom CNN (Baseline)
+A simple CNN built with Conv2D, Batch Normalization, Dropout, and Dense layers (input size: 48×48).
 
+Optimizer: RMSProp | Loss: Categorical Crossentropy
+
+Achieved moderate accuracy but showed mild overfitting due to limited data.
+
+
+*  MobileNet (Transfer Learning)
+MobileNet pretrained on ImageNet with frozen base layers and custom Dense + Dropout layers (input: 224×224).
+
+Optimizer: RMSProp | Metrics: Accuracy, F1 Score (~0.81)
+
+Performance: ~85–90% accuracy; generalized well on small data.
+
+* DenseNet121 (Transfer Learning + Fine-Tuning)
+DenseNet121 pretrained on ImageNet with custom top layers
+
+Optimizer: Adam | Metrics: Accuracy, Precision, Recall, F1
+
+Performance: 98%+ accuracy, F1 ≈ 0.98
+✅ Best-performing model overall.
 
 
 ### Tools used
