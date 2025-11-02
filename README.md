@@ -1,22 +1,25 @@
 
-### Project Overview
-
-
-### Motivation
+Motivation
 
 Early and accurate detection of lung infections is crucial for preventing disease progression and improving patient outcomes. However, radiographic images are often complex and require expert interpretation, which may not always be accessible in low-resource settings.
-This project aims to develop an automated deep learning model capable of identifying lung infection patterns from medical images. By leveraging Convolutional Neural Networks (CNNs) and transfer learning techniques, the model seeks to support medical professionals in diagnostic decision-making, reduce workload, and enhance screening efficiency.
+This project aims to develop an automated deep learning model capable of identifying lung infection patterns from medical images. By leveraging Convolutional Neural Networks (CNNs) and transfer learning techniques, the model supports medical professionals in diagnostic decision-making, reduces workload, and enhances screening efficiency.
 
-### Approach
+Approach
+Data Exploration and Visualization
 
-Data Exploration and Visualization: Examined image distribution across three classes — Healthy, Type 1 disease, and Type 2 disease — to understand class balance.
+Examined image distribution across three classes — Healthy, Type 1 disease, and Type 2 disease — to understand class balance.
 
-Preprocessing and Augmentation: Applied data augmentation (random flips, rotations, rescaling, and resizing) to increase dataset variability and improve model robustness.
+Preprocessing and Augmentation
 
+Applied data augmentation (random flips, rotations, rescaling, and resizing) to increase dataset variability and improve model robustness.
 
-###  Dataset Overview
+Dataset Overview
 
-The dataset consists of 251 training images and 66 test images distributed across three classes:
+Training images: 251
+
+Test images: 66
+
+Classes:
 
 Healthy
 
@@ -24,7 +27,7 @@ Type 1 disease
 
 Type 2 disease
 
-### Model Architecture:
+Model Architecture
 
 Built a custom CNN with three convolutional blocks followed by fully connected layers.
 
@@ -32,39 +35,43 @@ Used Glorot Normal (Xavier) initialization for stable gradient flow.
 
 Incorporated Batch Normalization and ReLU activations for faster convergence and improved performance.
 
-Regularization and Optimization:
+Regularization and Optimization
 
 Mitigated overfitting using L2 regularization, Dropout, and Early Stopping with validation monitoring to restore the best weights.
 
-Compiled the model with categorical cross-entropy loss and the RMSprop optimizer for stable optimization.
+Compiled the model with Categorical Crossentropy loss and the RMSprop optimizer for stable optimization.
 
+Models Experimented
+1. Custom CNN (Baseline)
 
-### Models experimented
+Simple CNN built with Conv2D, Batch Normalization, Dropout, and Dense layers (input size: 48×48).
 
-*  Custom CNN (Baseline)
-A simple CNN built with Conv2D, Batch Normalization, Dropout, and Dense layers (input size: 48×48).
+Optimizer: RMSProp
 
-Optimizer: RMSProp | Loss: Categorical Crossentropy
+Loss: Categorical Crossentropy
 
 Achieved moderate accuracy but showed mild overfitting due to limited data.
 
+2. MobileNet (Transfer Learning)
 
-*  MobileNet (Transfer Learning)
-MobileNet pretrained on ImageNet with frozen base layers and custom Dense + Dropout layers (input: 224×224).
+MobileNet pretrained on ImageNet with frozen base layers and custom Dense + Dropout layers (input size: 224×224).
 
-Optimizer: RMSProp | Metrics: Accuracy, F1 Score (~0.81)
+Optimizer: RMSProp
 
-Performance: ~85–90% accuracy; generalized well on small data.
+Metrics: Accuracy, F1 Score (~0.81)
 
-* DenseNet121 (Transfer Learning + Fine-Tuning)
-DenseNet121 pretrained on ImageNet with custom top layers
+Achieved ~85–90% accuracy and generalized well on small data.
 
-Optimizer: Adam | Metrics: Accuracy, Precision, Recall, F1
+3. DenseNet121 (Transfer Learning + Fine-Tuning)
 
-Performance: 98%+ accuracy, F1 ≈ 0.98
-✅ Best-performing model overall.
+DenseNet121 pretrained on ImageNet with custom top layers: Dense(1024) → Dropout → Dense(256) → Dropout → Dense(3, softmax).
 
+Optimizer: Adam
 
-### Tools used
-Tensorflow with Keras API
+Metrics: Accuracy, Precision, Recall, F1
 
+Performance: ~98% accuracy, F1 ≈ 0.98 (best-performing model)
+
+Tools Used
+
+TensorFlow with Keras API
