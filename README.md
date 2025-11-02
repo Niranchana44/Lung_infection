@@ -1,14 +1,15 @@
-# Lung Infection Detection using CNN and Transfer Learning
+## Lung Infection Detection using CNN and Transfer Learning
 
 
 ## **Motivation**
 
+I chose this project driven by my passion for applying AI for real-world applciations particulart in the healthcare space
 
 Early and accurate detection of lung infections is crucial for preventing disease progression and improving patient outcomes. However, radiographic images are often complex and require expert interpretation, which may not always be accessible in low-resource settings.  
 
 This project aims to develop an automated deep learning model capable of identifying lung infection patterns from medical images. By leveraging **Convolutional Neural Networks (CNNs)** and **transfer learning techniques**, the model supports medical professionals in diagnostic decision-making, reduces workload, and enhances screening efficiency.
 
---
+
 ## **Approach**
 
 ### **Data Exploration and Visualization**
@@ -26,22 +27,19 @@ This project aims to develop an automated deep learning model capable of identif
   - Healthy  
   - Type 1 disease  
   - Type 2 disease  
-<!-- Use '-' for bullet points; indent sub-bullets with two spaces -->
 
----
 
 ## **Model Architecture**
 - Built a **custom CNN** with three convolutional blocks followed by fully connected layers.  
 - Used **Glorot Normal (Xavier)** initialization for stable gradient flow.  
 - Incorporated **Batch Normalization** and **ReLU activations** for faster convergence and improved performance.
-
----
+- 
 
 ## **Regularization and Optimization**
 - Mitigated overfitting using **L2 regularization**, **Dropout**, and **Early Stopping** with validation monitoring to restore the best weights.  
 - Compiled the model with **Categorical Crossentropy** loss and the **RMSprop** optimizer for stable optimization.
 
----
+
 
 ## **Models Experimented**
 
@@ -63,15 +61,12 @@ This project aims to develop an automated deep learning model capable of identif
 - **Metrics:** Accuracy, Precision, Recall, F1  
 - **Performance:** ~98% accuracy, F1 ≈ 0.98 (best-performing model)
 
----
-
 ## **Results Summary**
 - **Best Model:** DenseNet121 (Transfer Learning + Fine-Tuning)  
 - **Test Accuracy:** ~98%  
 - **F1 Score:** ~0.98  
 - Demonstrated excellent generalization across all classes, outperforming baseline and other pretrained models.
 
----
 
 ## **Future Work**
 - Experiment with larger and more diverse datasets to improve robustness.  
@@ -79,7 +74,7 @@ This project aims to develop an automated deep learning model capable of identif
 - Incorporate explainable AI (Grad-CAM, LIME) for visual interpretability of predictions.  
 - Deploy as a lightweight web or mobile diagnostic tool.
 
----
+  
 
 ## **Tools Used**
 - **TensorFlow** with **Keras API**  
