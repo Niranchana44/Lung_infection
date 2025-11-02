@@ -12,6 +12,7 @@ This project aims to develop an automated deep learning model capable of identif
 
 ## **Approach**
 
+
 ### **Data Exploration and Visualization**
 
 - Examined image distribution across three classes — *Healthy*, *Type 1 disease*, and *Type 2 disease* — to understand class balance.
@@ -30,7 +31,7 @@ This project aims to develop an automated deep learning model capable of identif
 
 
 ## **Model Architecture**
-- Built a **custom CNN** with three convolutional blocks followed by fully connected layers.  
+- Built a **custom CNN** with three convolutional blocks followed by fully connected layers.
 - Used **Glorot Normal (Xavier)** initialization for stable gradient flow.  
 - Incorporated **Batch Normalization** and **ReLU activations** for faster convergence and improved performance.
 
@@ -39,6 +40,8 @@ This project aims to develop an automated deep learning model capable of identif
 - Mitigated overfitting using **L2 regularization**, **Dropout**, and **Early Stopping** with validation monitoring to restore the best weights.  
 - Compiled the model with **Categorical Crossentropy** loss and the **RMSprop** optimizer for stable optimization.
 
+### Key challenge faced
+-  Limited dataset caused the model to overfit.
 
 
 ## **Models Experimented**
@@ -48,6 +51,8 @@ This project aims to develop an automated deep learning model capable of identif
 - **Optimizer:** RMSProp  
 - **Loss:** Categorical Crossentropy  
 - Achieved moderate accuracy but showed mild overfitting due to limited data.
+
+- Initially used the pretrained weights directly. Later unfroze selected layers to fine-tune the model, adapting it to lung infection classes that differed from ImageNet categories.
 
 ### **2. MobileNet (Transfer Learning)**
 - MobileNet pretrained on ImageNet with frozen base layers and custom Dense + Dropout layers (input size: 224×224).  
