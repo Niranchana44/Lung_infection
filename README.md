@@ -3,7 +3,7 @@
 
 ## **Motivation**
 
-I chose this project driven by my passion for applying AI for real-world applciations particulart in the healthcare space
+I chose this project driven by my passion for applying AI for real-world applciations particularly in the healthcare space
 
 Early and accurate detection of lung infections is crucial for preventing disease progression and improving patient outcomes. However, radiographic images are often complex and require expert interpretation, which may not always be accessible in low-resource settings.  
 
