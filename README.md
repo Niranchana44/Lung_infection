@@ -5,7 +5,8 @@
 
 ### Motivation
 
-The project explored multiple deep learning architectures for detecting lung infections from chest images.
+Early and accurate detection of lung infections is crucial for preventing disease progression and improving patient outcomes. However, radiographic images are often complex and require expert interpretation, which may not always be accessible in low-resource settings.
+This project aims to develop an automated deep learning model capable of identifying lung infection patterns from medical images. By leveraging Convolutional Neural Networks (CNNs) and transfer learning techniques, the model seeks to support medical professionals in diagnostic decision-making, reduce workload, and enhance screening efficiency.
 
 
 ### Models experimented
