@@ -1,77 +1,87 @@
+# Lung Infection Detection using CNN and Transfer Learning
 
-Motivation
 
-Early and accurate detection of lung infections is crucial for preventing disease progression and improving patient outcomes. However, radiographic images are often complex and require expert interpretation, which may not always be accessible in low-resource settings.
-This project aims to develop an automated deep learning model capable of identifying lung infection patterns from medical images. By leveraging Convolutional Neural Networks (CNNs) and transfer learning techniques, the model supports medical professionals in diagnostic decision-making, reduces workload, and enhances screening efficiency.
+## **Motivation**
 
-Approach
-Data Exploration and Visualization
 
-Examined image distribution across three classes — Healthy, Type 1 disease, and Type 2 disease — to understand class balance.
+Early and accurate detection of lung infections is crucial for preventing disease progression and improving patient outcomes. However, radiographic images are often complex and require expert interpretation, which may not always be accessible in low-resource settings.  
 
-Preprocessing and Augmentation
+This project aims to develop an automated deep learning model capable of identifying lung infection patterns from medical images. By leveraging **Convolutional Neural Networks (CNNs)** and **transfer learning techniques**, the model supports medical professionals in diagnostic decision-making, reduces workload, and enhances screening efficiency.
 
-Applied data augmentation (random flips, rotations, rescaling, and resizing) to increase dataset variability and improve model robustness.
+--
+## **Approach**
 
-Dataset Overview
+### **Data Exploration and Visualization**
 
-Training images: 251
+- Examined image distribution across three classes — *Healthy*, *Type 1 disease*, and *Type 2 disease* — to understand class balance.
 
-Test images: 66
+### **Preprocessing and Augmentation**
+- Applied data augmentation (**random flips**, **rotations**, **rescaling**, and **resizing**) to increase dataset variability and improve model robustness.
 
-Classes:
 
-Healthy
+## **Dataset Overview**
+- **Training images:** 251  
+- **Test images:** 66  
+- **Classes:**  
+  - Healthy  
+  - Type 1 disease  
+  - Type 2 disease  
+<!-- Use '-' for bullet points; indent sub-bullets with two spaces -->
 
-Type 1 disease
+---
 
-Type 2 disease
+## **Model Architecture**
+- Built a **custom CNN** with three convolutional blocks followed by fully connected layers.  
+- Used **Glorot Normal (Xavier)** initialization for stable gradient flow.  
+- Incorporated **Batch Normalization** and **ReLU activations** for faster convergence and improved performance.
 
-Model Architecture
+---
 
-Built a custom CNN with three convolutional blocks followed by fully connected layers.
+## **Regularization and Optimization**
+- Mitigated overfitting using **L2 regularization**, **Dropout**, and **Early Stopping** with validation monitoring to restore the best weights.  
+- Compiled the model with **Categorical Crossentropy** loss and the **RMSprop** optimizer for stable optimization.
 
-Used Glorot Normal (Xavier) initialization for stable gradient flow.
+---
 
-Incorporated Batch Normalization and ReLU activations for faster convergence and improved performance.
+## **Models Experimented**
 
-Regularization and Optimization
+### **1. Custom CNN (Baseline)**
+- Simple CNN built with Conv2D, Batch Normalization, Dropout, and Dense layers (input size: 48×48).  
+- **Optimizer:** RMSProp  
+- **Loss:** Categorical Crossentropy  
+- Achieved moderate accuracy but showed mild overfitting due to limited data.
 
-Mitigated overfitting using L2 regularization, Dropout, and Early Stopping with validation monitoring to restore the best weights.
+### **2. MobileNet (Transfer Learning)**
+- MobileNet pretrained on ImageNet with frozen base layers and custom Dense + Dropout layers (input size: 224×224).  
+- **Optimizer:** RMSProp  
+- **Metrics:** Accuracy, F1 Score (~0.81)  
+- Achieved ~85–90% accuracy and generalized well on small data.
 
-Compiled the model with Categorical Crossentropy loss and the RMSprop optimizer for stable optimization.
+### **3. DenseNet121 (Transfer Learning + Fine-Tuning)**
+- DenseNet121 pretrained on ImageNet with custom top layers: Dense(1024) → Dropout → Dense(256) → Dropout → Dense(3, softmax).  
+- **Optimizer:** Adam  
+- **Metrics:** Accuracy, Precision, Recall, F1  
+- **Performance:** ~98% accuracy, F1 ≈ 0.98 (best-performing model)
 
-Models Experimented
-1. Custom CNN (Baseline)
+---
 
-Simple CNN built with Conv2D, Batch Normalization, Dropout, and Dense layers (input size: 48×48).
+## **Results Summary**
+- **Best Model:** DenseNet121 (Transfer Learning + Fine-Tuning)  
+- **Test Accuracy:** ~98%  
+- **F1 Score:** ~0.98  
+- Demonstrated excellent generalization across all classes, outperforming baseline and other pretrained models.
 
-Optimizer: RMSProp
+---
 
-Loss: Categorical Crossentropy
+## **Future Work**
+- Experiment with larger and more diverse datasets to improve robustness.  
+- Explore attention-based architectures (e.g., Vision Transformers).  
+- Incorporate explainable AI (Grad-CAM, LIME) for visual interpretability of predictions.  
+- Deploy as a lightweight web or mobile diagnostic tool.
 
-Achieved moderate accuracy but showed mild overfitting due to limited data.
+---
 
-2. MobileNet (Transfer Learning)
-
-MobileNet pretrained on ImageNet with frozen base layers and custom Dense + Dropout layers (input size: 224×224).
-
-Optimizer: RMSProp
-
-Metrics: Accuracy, F1 Score (~0.81)
-
-Achieved ~85–90% accuracy and generalized well on small data.
-
-3. DenseNet121 (Transfer Learning + Fine-Tuning)
-
-DenseNet121 pretrained on ImageNet with custom top layers: Dense(1024) → Dropout → Dense(256) → Dropout → Dense(3, softmax).
-
-Optimizer: Adam
-
-Metrics: Accuracy, Precision, Recall, F1
-
-Performance: ~98% accuracy, F1 ≈ 0.98 (best-performing model)
-
-Tools Used
-
-TensorFlow with Keras API
+## **Tools Used**
+- **TensorFlow** with **Keras API**  
+- **NumPy**, **Matplotlib**, **Pandas** for data preprocessing and visualization  
+- **Google Colab** for model training and experimentation 
