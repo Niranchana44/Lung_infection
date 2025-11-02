@@ -2,58 +2,46 @@
 ### Project Overview
 
 
-
 ### Motivation
 
 Early and accurate detection of lung infections is crucial for preventing disease progression and improving patient outcomes. However, radiographic images are often complex and require expert interpretation, which may not always be accessible in low-resource settings.
 This project aims to develop an automated deep learning model capable of identifying lung infection patterns from medical images. By leveraging Convolutional Neural Networks (CNNs) and transfer learning techniques, the model seeks to support medical professionals in diagnostic decision-making, reduce workload, and enhance screening efficiency.
 
+### Approach
+
+Data Exploration and Visualization: Examined image distribution across three classes — Healthy, Type 1 disease, and Type 2 disease — to understand class balance.
+
+Preprocessing and Augmentation: Applied data augmentation (random flips, rotations, rescaling, and resizing) to increase dataset variability and improve model robustness.
+
+
+### 1️⃣ Dataset Overview
+
+The dataset consists of 251 training images and 66 test images distributed across three classes:
+
+Healthy
+
+Type 1 disease
+
+Type 2 disease
+
+### Model Architecture:
+
+Built a custom CNN with three convolutional blocks followed by fully connected layers.
+
+Used Glorot Normal (Xavier) initialization for stable gradient flow.
+
+Incorporated Batch Normalization and ReLU activations for faster convergence and improved performance.
+
+Regularization and Optimization:
+
+Mitigated overfitting using L2 regularization, Dropout, and Early Stopping with validation monitoring to restore the best weights.
+
+Compiled the model with categorical cross-entropy loss and the RMSprop optimizer for stable optimization.
+
 
 ### Models experimented
 
-1) A baseline convolutional neural network (CNN) was implemented with Conv2D, Batch Normalization, Dropout, and Dense layers.
 
-Input size: 48×48
-
-Loss: Categorical Crossentropy
-
-Optimizer: RMSProp
-
-Performance: Moderate accuracy, with signs of overfitting due to small dataset size.
-
-What were the key challenges faced :
-Challenge: Limited dataset size caused the model to overfit.
-
-Due to the limited dataset, the project explored transfer learning by leveraging pretrained architectures (MobileNet and DenseNet121) trained on ImageNet, allowing the model to learn high-level features. Initially, the pretrained weights were used with frozen layers to retain general visual features. Later, selected layers were unfrozen and fine-tuned to adapt the models to lung infection classes, which differ from the original ImageNet categories.
-
-2)  MobileNet (Transfer Learning)
-
-MobileNet pretrained on ImageNet was used with frozen base layers, followed by custom Dense and Dropout layers.
-
-Input size: 224×224
-
-Loss: Categorical Crossentropy
-
-Optimizer: RMSProp
-
-Metrics: Accuracy, F1 Score
-
-Performance: ~85–90% accuracy and F1 ≈ 0.81
- Performed efficiently and generalized well
-
- 3) DenseNet121 pretrained on ImageNet was used with frozen base layers, followed by custom layers
-
-Input size: 224×224
-
-Loss: Categorical Crossentropy
-
-Optimizer: Adam
-
-Metrics: Accuracy, Precision, Recall, F1 Score
-
-EarlyStopping: Patience=6, restore_best_weights=True
-
-Performance: 98%+ accuracy, F1 ≈ 0.98
 
 
 ### Tools used
