@@ -33,7 +33,7 @@ This project aims to develop an automated deep learning model capable of identif
 - Built a **custom CNN** with three convolutional blocks followed by fully connected layers.  
 - Used **Glorot Normal (Xavier)** initialization for stable gradient flow.  
 - Incorporated **Batch Normalization** and **ReLU activations** for faster convergence and improved performance.
-- 
+
 
 ## **Regularization and Optimization**
 - Mitigated overfitting using **L2 regularization**, **Dropout**, and **Early Stopping** with validation monitoring to restore the best weights.  
