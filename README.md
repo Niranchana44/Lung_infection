@@ -54,7 +54,7 @@ This project aims to develop an automated deep learning model capable of identif
 
 - Initially used the pretrained weights directly. Later unfroze selected layers to fine-tune the model, adapting it to lung infection classes that differed from ImageNet categories.
 
-### **2. MobileNet (Transfer Learning)**
+### **2. MobileNet (Transfer Learning+ Fine-tuning)**
 - MobileNet pretrained on ImageNet with frozen base layers and custom Dense + Dropout layers (input size: 224×224).  
 - **Optimizer:** RMSProp  
 - **Metrics:** Accuracy, F1 Score (~0.81)  
